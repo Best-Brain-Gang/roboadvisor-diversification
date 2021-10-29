@@ -1,11 +1,9 @@
 import { Helmet } from 'react-helmet';
 import {
-  Avatar,
   Box,
   Container,
   Grid
 } from '@material-ui/core';
-import ChatBubbleRoundedIcon from '@material-ui/icons/ChatBubbleRounded';
 import Budget from '../components/dashboard/Budget';
 import LatestOrders from '../components/dashboard/LatestOrders';
 import LatestProducts from '../components/dashboard/LatestProducts';
@@ -14,6 +12,7 @@ import TasksProgress from '../components/dashboard/TasksProgress';
 import TotalCustomers from '../components/dashboard/TotalCustomers';
 import TotalProfit from '../components/dashboard/TotalProfit';
 import TrafficByDevice from '../components/dashboard/TrafficByDevice';
+import LexChat from '../components/bot/LexChat';
 
 const Dashboard = () => (
   <>
@@ -54,20 +53,16 @@ const Dashboard = () => (
             <LatestOrders />
           </Grid>
         </Grid>
-        <Grid item>
-          <Avatar
-            sx={{
-              position: 'absolute',
-              backgroundColor: '#5664d2',
-              height: 56,
-              width: 56,
-              bottom: 10,
-              right: 10
-            }}
-          >
-            <ChatBubbleRoundedIcon />
-          </Avatar>
-        </Grid>
+        <LexChat
+          botName="roboAdvisorDiversification"
+          IdentityPoolId="us-west-2:e528a8da-fd69-4449-98e9-1509f8ea08c8"
+          placeholder="Type your message and hit Enter"
+          style={{ position: 'absolute' }}
+          backgroundColor="#FFFFFF"
+          height="430px"
+          region="us-west-2"
+          headerText="Robo Advisor"
+        />
       </Container>
     </Box>
   </>
