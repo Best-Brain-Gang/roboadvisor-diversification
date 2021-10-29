@@ -35,6 +35,7 @@
     "@material-ui/core": "^5.0.0-beta.5",
     "@material-ui/icons": "^5.0.0-beta.5",
     "@material-ui/styles": "^5.0.0-beta.5",
+    "aws-sdk": "^2.1017.0",
     "chart.js": "^3.5.1",
     "formik": "^2.1.5",
     "history": "^5.0.0",
