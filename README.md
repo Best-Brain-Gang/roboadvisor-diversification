@@ -12,21 +12,23 @@
 
 ## Table of Contents
 
-[Disclaimer]()
+[Disclaimer](https://github.com/Best-Brain-Gang/roboadvisor-diversification#disclaimer)
 
-[Project Overview]()
+[Project Overview](https://github.com/Best-Brain-Gang/roboadvisor-diversification#project-overview)
 
-[Technologies]()
+[Technologies](https://github.com/Best-Brain-Gang/roboadvisor-diversification#technologies)
 
-[Installation Guide]()
+[Installation Guide](https://github.com/Best-Brain-Gang/roboadvisor-diversification#installation-guide)
 
-[Examples]()
+[Examples](https://github.com/Best-Brain-Gang/roboadvisor-diversification#examples)
 
-[Usage]()
+[Usage](https://github.com/Best-Brain-Gang/roboadvisor-diversification#usage)
 
-[Contributors]()
+[Presentation Deck](https://github.com/Best-Brain-Gang/roboadvisor-diversification#presentation-deck)
 
-[License]()
+[Contributors](https://github.com/Best-Brain-Gang/roboadvisor-diversification#contributors)
+
+[License](https://github.com/Best-Brain-Gang/roboadvisor-diversification#license)
 
 ---
 ## **Disclaimer**
