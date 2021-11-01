@@ -11,11 +11,10 @@ import {
 } from '@material-ui/core';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
+  avatar: '/static/images/avatars/chris_henderson.png',
+  city: 'Seattle',
   country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
+  name: 'Chris Henderson',
   timezone: 'GTM-7'
 };
 
