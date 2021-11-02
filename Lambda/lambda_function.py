@@ -85,7 +85,7 @@ def close(session_attributes, fulfillment_state, message):
 
 
 
-def validate_data(first_name, age, income_amount, debt_amount, investment_amount, intent_request):
+def validate_data(first_name, age, income_amount, debt_amount, investment_amount, risk_level, intent_request):
     
     # The 'firstName' should only contain letters and no numbers or special characters. Creating this validation also changing the slot type to AMAZON.AlphaNumeric instead of AMAZON.US.First_Name
     if first_name is not None:
@@ -128,9 +128,29 @@ def validate_data(first_name, age, income_amount, debt_amount, investment_amount
             violatedSlot = "investmentAmount"
             message = "The amount you entered did not qualify for this service. We require a minimum of $25,000 investment. Please enter a new investment amount." 
             return build_validation_result(is_investment_amount_valid, violatedSlot, message)
-            
+    
+    if risk_level is not None:
+        risk_level = parse_int(risk_level)
+        violatedSlot = "riskLevel"
+        if risk_level < 0 or risk_level > 10:
+            return build_validation_result(False, violatedSlot, "Your risk level is invalid, please input your risk between 0 to 10. (0- no risk, 1 to 4- conservative, 5 to 7- moderate, and 8 to 10- aggressive)")
+    
     return build_validation_result(True, None, None)
 
+def investment_recommendation(risk_level):
+    recommendation_result = ''
+    risk_level = parse_int(risk_level)
+    if risk_level == 0:
+        recommendation_result = 'Your risk level tolerance is zero or no risk.'
+    elif risk_level > 0 and risk_level <= 4:
+        recommendation_result = 'Your risk level tolerance is conservative.'
+    elif risk_level >= 5 and risk_level <= 7:
+        recommendation_result = 'Your risk level tolerance is moderate.'
+    elif risk_level >= 8 and risk_level <= 10:
+        recommendation_result = 'Your risk level tolerance is aggressive.'
+    else:
+        recommendation_result = 'Hello World'
+    return recommendation_result
 
 ### Intents Handlers ###
 def robodiversification_portfolio(intent_request):
@@ -143,13 +163,13 @@ def robodiversification_portfolio(intent_request):
     input_income_amount = get_slots(intent_request)["incomeAmount"]
     input_debt_amount = get_slots(intent_request)["debtAmount"]
     input_investment_amount = get_slots(intent_request)["investmentAmount"]
+    input_risk_level = get_slots(intent_request)["riskLevel"]
     source = intent_request["invocationSource"]
     
-    # YOUR CODE GOES HERE!
  
     if source == 'DialogCodeHook':
         slots = get_slots(intent_request)
-        validation_result = validate_data(input_first_name, input_age, input_income_amount, input_debt_amount, input_investment_amount, intent_request)
+        validation_result = validate_data(input_first_name, input_age, input_income_amount, input_debt_amount, input_investment_amount, input_risk_level, intent_request)
      
         if not validation_result['isValid']:
             slots[validation_result['violatedSlot']] = None
@@ -160,11 +180,13 @@ def robodiversification_portfolio(intent_request):
                 validation_result['message'])
         output_session_attributes = intent_request['sessionAttributes'] if intent_request['sessionAttributes'] is not None else {}
         return delegate(output_session_attributes, get_slots(intent_request))
-  
+    
+    recommendation_result = investment_recommendation(input_risk_level)
+    
     return close(intent_request['sessionAttributes'],
                  'Fulfilled',
                  {'contentType': 'PlainText',
-                  'content': 'Thank you, {}, for using RoboAdvisor. To access your portfolio, please go here: ___'.format(input_first_name)})
+                  'content': 'Great, {}! We confirmed that you picked a risk level of {}. {} Please check out your potential portfolio on our website. Thank you for using our RoboAdvisor service!'.format(input_first_name, input_risk_level, recommendation_result)})
 
 ### Intents Dispatcher ###
 def dispatch(intent_request):
@@ -188,4 +210,7 @@ def lambda_handler(event, context):
     The JSON body of the request is provided in the event slot.
     """
     logger.debug('event.bot.name={}'.format(event['bot']['name']))
-    return dispatch(event)
+    #return dispatch(event)
+    response = dispatch(event)
+    logger.debug(response)
+    return response
