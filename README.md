@@ -61,7 +61,7 @@ This project leverages **[python version 3.8.5](https://www.python.org/downloads
 
 * [Numpy](https://numpy.org/) - This provides the ability to work with arrays and use different mathematical calculations on arrays.
 
-* [Yahoo API](https://developer.yahoo.com/api/) - This was used to be able to get closing prices for the ETFs that we will be using in the list of  investments.
+* [Yahoo API](https://pypi.org/project/fix-yahoo-finance/0.1.30/) - This was used to be able to get closing prices for the ETFs that we will be using in the list of  investments.
 
 * [Scikit Learn](https://scikit-learn.org/stable/) - *version 0.24.2* - This package has a lot of different tools and model that could be use to create a machine learning model.
 
@@ -156,9 +156,16 @@ Once you click ENTER, this will open on your default browser, which will allow y
 ```
 
 ---
+
+### 7. To install the Yahoo Finance API, please type below on your dev environment:
+`pip install yfinance --upgrade --no-cache-dir`
+
+---
 ## Examples
 
 Here are some of the data we did for this model.
+
+
 
 ---
 
