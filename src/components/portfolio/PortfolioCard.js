@@ -48,13 +48,48 @@ const ProductCard = ({ product, ...rest }) => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            pb: 3
+            pb: 0
           }}
         >
           <Doughnut
             data={product.data}
             options={options}
           />
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            pt: 0
+          }}
+        >
+          {product.allocations.map(({
+            color,
+            title,
+            value
+          }) => (
+            <Box
+              key={title}
+              sx={{
+                p: 1,
+                textAlign: 'center'
+              }}
+            >
+              <Typography
+                color="textPrimary"
+                variant="body1"
+              >
+                {title}
+              </Typography>
+              <Typography
+                style={{ color }}
+                variant="h2"
+              >
+                {value}
+                %
+              </Typography>
+            </Box>
+          ))}
         </Box>
         <Typography
           align="center"

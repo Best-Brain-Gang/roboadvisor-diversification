@@ -11,6 +11,18 @@ export default [
     media: '/static/images/products/product_2.png',
     title: 'Conservative',
     totalDownloads: '625',
+    allocations: [
+      {
+        title: 'Stocks',
+        value: 60,
+        color: colors.indigo[500]
+      },
+      {
+        title: 'Bonds',
+        value: 40,
+        color: colors.red[600]
+      }
+    ],
     data: {
       datasets: [
         {
@@ -35,6 +47,18 @@ export default [
     media: '/static/images/products/product_3.png',
     title: 'Mixture of conservative and agressive',
     totalDownloads: '857',
+    allocations: [
+      {
+        title: 'Stocks',
+        value: 80,
+        color: colors.indigo[500]
+      },
+      {
+        title: 'Bonds',
+        value: 20,
+        color: colors.red[600]
+      }
+    ],
     data: {
       datasets: [
         {
@@ -59,6 +83,13 @@ export default [
     media: '/static/images/products/product_4.png',
     title: 'Aggressive',
     totalDownloads: '406',
+    allocations: [
+      {
+        title: 'Stocks',
+        value: 100,
+        color: colors.indigo[500]
+      }
+    ],
     data: {
       datasets: [
         {
