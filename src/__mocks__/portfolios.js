@@ -43,9 +43,9 @@ export default [
   {
     id: uuid(),
     createdAt: '03/04/2019',
-    description: 'Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.',
+    description: 'Mixture of conservative and agressive',
     media: '/static/images/products/product_3.png',
-    title: 'Mixture of conservative and agressive',
+    title: 'Moderate',
     totalDownloads: '857',
     allocations: [
       {
