@@ -5,30 +5,12 @@ import {
   Card,
   CardContent,
   Divider,
-  colors,
   useTheme,
   Typography
 } from '@material-ui/core';
 
 const ProductCard = ({ product, ...rest }) => {
   const theme = useTheme();
-
-  const data = {
-    datasets: [
-      {
-        data: [63, 15, 22],
-        backgroundColor: [
-          colors.indigo[500],
-          colors.red[600],
-          colors.orange[600]
-        ],
-        borderWidth: 8,
-        borderColor: colors.common.white,
-        hoverBorderColor: colors.common.white
-      }
-    ],
-    labels: ['Stocks', 'Bonds', 'Crypto']
-  };
 
   const options = {
     animation: false,
@@ -70,7 +52,7 @@ const ProductCard = ({ product, ...rest }) => {
           }}
         >
           <Doughnut
-            data={data}
+            data={product.data}
             options={options}
           />
         </Box>

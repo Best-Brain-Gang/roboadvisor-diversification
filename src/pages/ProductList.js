@@ -4,9 +4,9 @@ import {
   Container,
   Grid,
 } from '@material-ui/core';
-import ProductListToolbar from '../components/product/ProductListToolbar';
-import ProductCard from '../components/product/ProductCard';
-import products from '../__mocks__/products';
+import PortfolioListToolbar from '../components/portfolio/PortfolioListToolbar';
+import PortfolioCard from '../components/portfolio/PortfolioCard';
+import portfolios from '../__mocks__/portfolios';
 
 const ProductList = () => (
   <>
@@ -21,21 +21,21 @@ const ProductList = () => (
       }}
     >
       <Container maxWidth={false}>
-        <ProductListToolbar />
+        <PortfolioListToolbar />
         <Box sx={{ pt: 3 }}>
           <Grid
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {portfolios.map((portfolio) => (
               <Grid
                 item
-                key={product.id}
+                key={portfolio.id}
                 lg={4}
                 md={6}
                 xs={12}
               >
-                <ProductCard product={product} />
+                <PortfolioCard product={portfolio} />
               </Grid>
             ))}
           </Grid>
