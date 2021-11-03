@@ -78,7 +78,7 @@ const TrafficByDevice = (props) => {
 
   return (
     <Card {...props}>
-      <CardHeader title="Assets" />
+      <CardHeader title="Asset Allocations" />
       <Divider />
       <CardContent>
         <Box
@@ -96,12 +96,11 @@ const TrafficByDevice = (props) => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            pt: 2
+            pt: 6
           }}
         >
           {devices.map(({
             color,
-            icon: Icon,
             title,
             value
           }) => (
@@ -112,7 +111,6 @@ const TrafficByDevice = (props) => {
                 textAlign: 'center'
               }}
             >
-              <Icon color="action" />
               <Typography
                 color="textPrimary"
                 variant="body1"
