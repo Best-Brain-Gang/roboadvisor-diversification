@@ -21,63 +21,63 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 const orders = [
   {
     id: uuid(),
-    ref: 'CDD1049',
-    amount: 30.5,
-    customer: {
-      name: 'Ekaterina Tankova'
+    ref: 'Conservative',
+    amount: '$10,000.50',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1555016400000,
     status: 'pending'
   },
   {
     id: uuid(),
-    ref: 'CDD1048',
-    amount: 25.1,
-    customer: {
-      name: 'Cao Yu'
+    ref: 'XLU',
+    amount: '$20,340.50',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1555016400000,
-    status: 'delivered'
+    status: 'fulfilled'
   },
   {
     id: uuid(),
-    ref: 'CDD1047',
-    amount: 10.99,
-    customer: {
-      name: 'Alexa Richardson'
+    ref: 'XLK',
+    amount: '$10,540.50',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1554930000000,
-    status: 'refunded'
+    status: 'fulfilled'
   },
   {
     id: uuid(),
-    ref: 'CDD1046',
-    amount: 96.43,
-    customer: {
-      name: 'Anje Keizer'
+    ref: 'Moderate',
+    amount: '$5,000.50',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1554757200000,
-    status: 'pending'
+    status: 'fulfilled'
   },
   {
     id: uuid(),
-    ref: 'CDD1045',
-    amount: 32.54,
-    customer: {
-      name: 'Clarke Gillebert'
+    ref: 'QQQ',
+    amount: '$3,000.20',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'fulfilled'
   },
   {
     id: uuid(),
-    ref: 'CDD1044',
-    amount: 16.76,
-    customer: {
-      name: 'Adam Denisov'
+    ref: 'Agressive',
+    amount: '$25,300.50',
+    exchange: {
+      name: 'Alpaca'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'fulfilled'
   }
 ];
 
@@ -91,10 +91,10 @@ const LatestTrades = (props) => (
           <TableHead>
             <TableRow>
               <TableCell>
-                Order Ref
+                Ticker/Portfolio
               </TableCell>
               <TableCell>
-                Customer
+                Exchange/API
               </TableCell>
               <TableCell sortDirection="desc">
                 <Tooltip
@@ -108,6 +108,9 @@ const LatestTrades = (props) => (
                     Date
                   </TableSortLabel>
                 </Tooltip>
+              </TableCell>
+              <TableCell>
+                Amount
               </TableCell>
               <TableCell>
                 Status
@@ -124,10 +127,13 @@ const LatestTrades = (props) => (
                   {order.ref}
                 </TableCell>
                 <TableCell>
-                  {order.customer.name}
+                  {order.exchange.name}
                 </TableCell>
                 <TableCell>
                   {moment(order.createdAt).format('DD/MM/YYYY')}
+                </TableCell>
+                <TableCell>
+                  {order.amount}
                 </TableCell>
                 <TableCell>
                   <Chip
