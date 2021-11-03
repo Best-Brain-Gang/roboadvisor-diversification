@@ -12,7 +12,7 @@ import TasksProgress from '../components/dashboard/TasksProgress';
 import TotalCustomers from '../components/dashboard/TotalCustomers';
 import TotalProfit from '../components/dashboard/TotalProfit';
 import AssetAllocations from '../components/dashboard/AssetAllocations';
-import LexChat from '../components/bot/LexChat';
+import LexChat from '../components/chatbot/LexChat';
 
 const Dashboard = () => (
   <>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Avatar,
@@ -15,7 +14,6 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-import getInitials from '../../utils/getInitials';
 
 const CustomerListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -84,16 +82,22 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   Name
                 </TableCell>
                 <TableCell>
-                  Email
+                  Tickers
                 </TableCell>
                 <TableCell>
-                  Location
+                  1M
                 </TableCell>
                 <TableCell>
-                  Phone
+                  3M
                 </TableCell>
                 <TableCell>
-                  Registration date
+                  6M
+                </TableCell>
+                <TableCell>
+                  1Y
+                </TableCell>
+                <TableCell>
+                  YTD
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -120,9 +124,12 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     >
                       <Avatar
                         src={customer.avatarUrl}
-                        sx={{ mr: 2 }}
+                        sx={{
+                          mr: 2,
+                          backgroundColor: '#5664d2'
+                        }}
                       >
-                        {getInitials(customer.name)}
+                        {customer.avatarUrl}
                       </Avatar>
                       <Typography
                         color="textPrimary"
@@ -133,16 +140,22 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {customer.tickers}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {customer['1M']}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {customer['3M']}
                   </TableCell>
                   <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                    {customer['6M']}
+                  </TableCell>
+                  <TableCell>
+                    {customer['1Y']}
+                  </TableCell>
+                  <TableCell>
+                    {customer.YTD}
                   </TableCell>
                 </TableRow>
               ))}
