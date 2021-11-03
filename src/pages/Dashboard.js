@@ -5,7 +5,7 @@ import {
   Grid
 } from '@material-ui/core';
 import Budget from '../components/dashboard/Budget';
-import LatestOrders from '../components/dashboard/LatestOrders';
+import LatestTrades from '../components/dashboard/LatestTrades';
 import CumulativeReturns from '../components/dashboard/CumulativeReturns';
 import TasksProgress from '../components/dashboard/TasksProgress';
 import TotalCustomers from '../components/dashboard/TotalCustomers';
@@ -46,7 +46,7 @@ const Dashboard = () => (
             <TotalProfit sx={{ height: '100%' }} />
           </Grid>
           <Grid item lg={12} md={12} xl={12} xs={12}>
-            <LatestOrders />
+            <LatestTrades />
           </Grid>
         </Grid>
         <LexChat

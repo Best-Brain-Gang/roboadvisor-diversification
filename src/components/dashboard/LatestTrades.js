@@ -81,7 +81,7 @@ const orders = [
   }
 ];
 
-const LatestOrders = (props) => (
+const LatestTrades = (props) => (
   <Card {...props}>
     <CardHeader title="Latest Orders" />
     <Divider />
@@ -161,4 +161,4 @@ const LatestOrders = (props) => (
   </Card>
 );
 
-export default LatestOrders;
+export default LatestTrades;
