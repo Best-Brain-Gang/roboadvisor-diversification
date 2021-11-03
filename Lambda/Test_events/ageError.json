@@ -1,23 +1,24 @@
 {
-    "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "John",
-    "sessionAttributes": {},
-    "bot": {
-      "name": "roboAdvisorDiversification",
-      "alias": "$LATEST",
-      "version": "$LATEST"
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "John",
+  "sessionAttributes": {},
+  "bot": {
+    "name": "roboAdvisorDiversification",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "RoboAdvisorDiversification",
+    "slots": {
+      "firstName": "John",
+      "age": "67",
+      "incomeAmount": "130000",
+      "debtAmount": "30000",
+      "investmentAmount": "30000",
+      "riskLevel": "7"
     },
-    "outputDialogMode": "Text",
-    "currentIntent": {
-      "name": "RoboAdvisorDiversification",
-      "slots": {
-        "firstName": "John",
-        "age": "67",
-        "incomeAmount": "130000",
-        "debtAmount": "30000",
-        "investmentAmount": "30000"
-      },
-      "confirmationStatus": "None"
-    }
+    "confirmationStatus": "None"
   }
+}

@@ -16,7 +16,8 @@
         "age": "30",
         "incomeAmount": "100000",
         "debtAmount": "30000",
-        "investmentAmount": "30000"
+        "investmentAmount": "30000",
+        "riskLevel": "7"
       },
       "confirmationStatus": "None"
     }
