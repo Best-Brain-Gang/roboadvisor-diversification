@@ -1,103 +1,100 @@
 import PropTypes from 'prop-types';
+import { Doughnut } from 'react-chartjs-2';
 import {
-  Avatar,
   Box,
   Card,
   CardContent,
   Divider,
-  Grid,
+  colors,
+  useTheme,
   Typography
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
-const ProductCard = ({ product, ...rest }) => (
-  <Card
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%'
-    }}
-    {...rest}
-  >
-    <CardContent>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          pb: 3
-        }}
-      >
-        <Avatar
-          alt="Product"
-          src={product.media}
-          variant="square"
-        />
-      </Box>
-      <Typography
-        align="center"
-        color="textPrimary"
-        gutterBottom
-        variant="h4"
-      >
-        {product.title}
-      </Typography>
-      <Typography
-        align="center"
-        color="textPrimary"
-        variant="body1"
-      >
-        {product.description}
-      </Typography>
-    </CardContent>
-    <Box sx={{ flexGrow: 1 }} />
-    <Divider />
-    <Box sx={{ p: 2 }}>
-      <Grid
-        container
-        spacing={2}
-        sx={{ justifyContent: 'space-between' }}
-      >
-        <Grid
-          item
+const ProductCard = ({ product, ...rest }) => {
+  const theme = useTheme();
+
+  const data = {
+    datasets: [
+      {
+        data: [63, 15, 22],
+        backgroundColor: [
+          colors.indigo[500],
+          colors.red[600],
+          colors.orange[600]
+        ],
+        borderWidth: 8,
+        borderColor: colors.common.white,
+        hoverBorderColor: colors.common.white
+      }
+    ],
+    labels: ['Stocks', 'Bonds', 'Crypto']
+  };
+
+  const options = {
+    animation: false,
+    cutoutPercentage: 80,
+    layout: { padding: 0 },
+    legend: {
+      display: false
+    },
+    maintainAspectRatio: false,
+    responsive: true,
+    tooltips: {
+      backgroundColor: theme.palette.background.paper,
+      bodyFontColor: theme.palette.text.secondary,
+      borderColor: theme.palette.divider,
+      borderWidth: 1,
+      enabled: true,
+      footerFontColor: theme.palette.text.secondary,
+      intersect: false,
+      mode: 'index',
+      titleFontColor: theme.palette.text.primary
+    }
+  };
+
+  return (
+    <Card
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
+      }}
+      {...rest}
+    >
+      <CardContent>
+        <Box
           sx={{
-            alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
+            justifyContent: 'center',
+            pb: 3
           }}
         >
-          <AccessTimeIcon color="action" />
-          <Typography
-            color="textSecondary"
-            display="inline"
-            sx={{ pl: 1 }}
-            variant="body2"
-          >
-            Updated 2hr ago
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          sx={{
-            alignItems: 'center',
-            display: 'flex'
-          }}
+          <Doughnut
+            data={data}
+            options={options}
+          />
+        </Box>
+        <Typography
+          align="center"
+          color="textPrimary"
+          gutterBottom
+          variant="h4"
         >
-          <GetAppIcon color="action" />
-          <Typography
-            color="textSecondary"
-            display="inline"
-            sx={{ pl: 1 }}
-            variant="body2"
-          >
-            {product.totalDownloads}
-            {' '}
-            Downloads
-          </Typography>
-        </Grid>
-      </Grid>
-    </Box>
-  </Card>
-);
+          {product.title}
+        </Typography>
+        <Typography
+          align="center"
+          color="textPrimary"
+          variant="body1"
+        >
+          {product.description}
+        </Typography>
+      </CardContent>
+      <Box sx={{ flexGrow: 1 }} />
+      <Divider />
+    </Card>
+  );
+};
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired

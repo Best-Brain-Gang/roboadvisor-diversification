@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Grid,
-  Pagination
 } from '@material-ui/core';
 import ProductListToolbar from '../components/product/ProductListToolbar';
 import ProductCard from '../components/product/ProductCard';
@@ -40,19 +39,6 @@ const ProductList = () => (
               </Grid>
             ))}
           </Grid>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            pt: 3
-          }}
-        >
-          <Pagination
-            color="primary"
-            count={3}
-            size="small"
-          />
         </Box>
       </Container>
     </Box>
