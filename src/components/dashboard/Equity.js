@@ -6,14 +6,15 @@ import {
   Grid,
   Typography
 } from '@material-ui/core';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
-import { red } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
-const Budget = (props) => (
+const Equity = ({ equity }) => (
   <Card
     sx={{ height: '100%' }}
-    {...props}
   >
     <CardContent>
       <Grid
@@ -33,7 +34,7 @@ const Budget = (props) => (
             color="textPrimary"
             variant="h3"
           >
-            100,000
+            <NumberFormat value={equity} displayType="text" thousandSeparator="," prefix="$" />
           </Typography>
         </Grid>
         <Grid item>
@@ -55,15 +56,15 @@ const Budget = (props) => (
           alignItems: 'center'
         }}
       >
-        <ArrowDownwardIcon sx={{ color: red[900] }} />
+        <ArrowUpwardIcon sx={{ color: green[900] }} />
         <Typography
           sx={{
-            color: red[900],
+            color: green[900],
             mr: 1
           }}
           variant="body2"
         >
-          12%
+          4%
         </Typography>
         <Typography
           color="textSecondary"
@@ -76,4 +77,8 @@ const Budget = (props) => (
   </Card>
 );
 
-export default Budget;
+Equity.propTypes = {
+  equity: PropTypes.number.isRequired
+};
+
+export default Equity;
