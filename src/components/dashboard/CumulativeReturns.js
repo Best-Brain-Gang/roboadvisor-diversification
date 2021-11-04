@@ -23,20 +23,10 @@ const Sales = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year',
+        data: [100000, 100555, 100600, 100880, 101002, 102222, 103450],
+        label: '',
         maxBarThickness: 10
       },
-      {
-        backgroundColor: colors.grey[200],
-        barPercentage: 0.5,
-        barThickness: 12,
-        borderRadius: 4,
-        categoryPercentage: 0.5,
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year',
-        maxBarThickness: 10
-      }
     ],
     labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
   };
@@ -104,7 +94,7 @@ const Sales = (props) => {
             Last 7 days
           </Button>
         )}
-        title="Cumulative Returns"
+        title="Total Equity"
       />
       <Divider />
       <CardContent>
