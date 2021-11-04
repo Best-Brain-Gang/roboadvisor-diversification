@@ -20,9 +20,9 @@
 
 [Installation Guide](https://github.com/Best-Brain-Gang/roboadvisor-diversification#installation-guide)
 
-[Examples](https://github.com/Best-Brain-Gang/roboadvisor-diversification#examples)
-
 [Usage](https://github.com/Best-Brain-Gang/roboadvisor-diversification#usage)
+
+[Examples](https://github.com/Best-Brain-Gang/roboadvisor-diversification#examples)
 
 [Presentation Deck](https://github.com/Best-Brain-Gang/roboadvisor-diversification#presentation-deck)
 
@@ -51,6 +51,7 @@ This project leverages **[python version 3.8.5](https://www.python.org/downloads
 * [pandas](https://pandas.pydata.org/docs/) - This was used to be able to easily manipulate dataframes.
 
 * [datetime](https://docs.python.org/3/library/datetime.html)
+
   *  [dateutil](https://dateutil.readthedocs.io/en/stable/index.html)
 
 * [AWS Lambda](https://aws.amazon.com/lambda/) - To build the functionality for the tool.
@@ -82,18 +83,13 @@ This project leverages **[python version 3.8.5](https://www.python.org/downloads
 
     * [Dropout](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout)
 
-    * [Bidirectional LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Bidirectional)
-
-    * [Text Vectorization](https://www.tensorflow.org/api_docs/python/tf/keras/layers/TextVectorization) - This transforms a batch of strings (one example = one string) into either a list of token indices (one example = 1D tensor of integer token indices) or a dense representation (one example = 1D tensor of float values representing data about the example's tokens).
-
-    * [GlobalAveragePooling1D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GlobalAveragePooling1D) 
-
 * [Keras](https://keras.io/) - *version 2.6.0* - This is an API designed for human beings, not machines. Keras follows best practices for reducing cognitive load: it offers consistent & simple APIs, it minimizes the number of user actions required for common use cases, and it provides clear & actionable error messages. It also has a free open source Python library for developing and evaluating deep learning models.
 
      * [models Sequential](https://keras.io/guides/sequential_model/) - This is used appropriately for a plain stack of layers where each layer has exactly one input tensor and one output tensor.
 
 * [React](https://reactjs.org/) - We used this to create a frontend user website that the user can interactive with the RoboAdvisor Diversification chatbot.
 
+* [TQDM](https://github.com/tqdm/tqdm) - We used this library to create a progress bar for Python for easy viewing when loading models.
 ---
 ## Installation Guide
 
@@ -147,24 +143,22 @@ Once you click ENTER, this will open on your default browser, which will allow y
 
 ---
 
-### 6. To install React on your machine, please go to your dev environment and type below, but make sure the location is where you have a cloned of the this repo:
+### 6. To install ReactJS on your machine, please go to your dev environment and type below, but make sure the location is where you have a cloned of the this repo:
 
 ```
   npm install
   npm start
+  npm install -g serve
+  serve -s build
 ```
+- Once built, a html website address will show, see pic below. You'll need to copy and paste this on your browser to view the user interface. It may have a different local host number than the photo.
+
+    <img src="./Images/reactlink.png" alt="ReactJS Website" width="300" height="150"> 
 
 ---
 
 ### 7. To install the Yahoo Finance API, please type below on your dev environment:
 `pip install yfinance --upgrade --no-cache-dir`
-
----
-## Examples
-
-Here are some of the data we did for this model.
-
-
 
 ---
 
@@ -184,17 +178,32 @@ Here are some of the data we did for this model.
 3. Then, it will ask how much amount your annual income is, which needs to be at least $130,000.
 4. Then, it will ask how much your annual debt is, which needs to be 30% less than your annual income.
 5. Then, it will ask how much you would like to invest, which needs to be at least $25,000.
-6. Then, once you make a confirmation to proceed, it will go to the website.
-
-### **This shows just the correct chatbot prompts:**
+6. Then, once you make a confirmation to proceed, the user can check their portfolio on the React website.
 
 
+---
+
+## Examples
+
+Here are some of the example of the project:
+
+1. AWS RoboAdvisor Chatbot 
+    
+    ![AWS RoboAdvisor Chatbot](./Images/awschatbot.gif)
+
+2. Sample Random Portfolios 
+
+    ![Markowitz portfolio](./Images/markowitz_portfolios.png)
+
+3. Sample React Website
+
+    ![React website](./Images/reactwebsite.gif)
 ---
 ## **Presentation Deck**
 
 ### Click [**HERE**]() to learn more from our presentation.
 
-[![Crowdfunding Deck](./Images/twitter_sentiment_analysis_deck.png)]()
+[![RoboAdvisor Diversification Deck](./Images/presentationdeck_project3.png)]()
 
 ---
 

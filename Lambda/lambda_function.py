@@ -133,7 +133,7 @@ def validate_data(first_name, age, income_amount, debt_amount, investment_amount
     if risk_level is not None:
         risk_level = parse_int(risk_level)
         violatedSlot = "riskLevel"
-        if risk_level < 0 or risk_level > 10:
+        if risk_level < 1 or risk_level > 10:
             return build_validation_result(False, violatedSlot, "Your risk level is invalid, please input your risk between 0 to 10. (0- no risk and 10- high risk)")
     
     return build_validation_result(True, None, None)
@@ -141,16 +141,15 @@ def validate_data(first_name, age, income_amount, debt_amount, investment_amount
 def investment_recommendation(risk_level):
     recommendation_result = ''
     risk_level = parse_int(risk_level)
-    if risk_level == 0:
-        recommendation_result = 'Your risk level tolerance is no risk.'
-    elif risk_level > 0 and risk_level <= 4:
+    
+    if risk_level > 0 and risk_level <= 4:
         recommendation_result = 'Your risk level tolerance is conservative.'
     elif risk_level >= 5 and risk_level <= 7:
         recommendation_result = 'Your risk level tolerance is moderate.'
     elif risk_level >= 8 and risk_level <= 10:
         recommendation_result = 'Your risk level tolerance is aggressive.'
     else:
-        recommendation_result = 'Invalid input. Please input your risk between 0 to 10. (0- no risk and 10- high risk)'
+        recommendation_result = 'Invalid input. Please input your risk between 1 to 10. (1- low risk and 10- high risk)'
     return recommendation_result
 
 ### Intents Handlers ###
