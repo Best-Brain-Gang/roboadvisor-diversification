@@ -83,7 +83,7 @@ const orders = [
 
 const LatestTrades = (props) => (
   <Card {...props}>
-    <CardHeader title="Latest Orders" />
+    <CardHeader title="Latest Trades" />
     <Divider />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>

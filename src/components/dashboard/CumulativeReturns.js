@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -9,11 +10,31 @@ import {
   useTheme,
   colors
 } from '@material-ui/core';
+import moment from 'moment';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import Alpaca from '@alpacahq/alpaca-trade-api';
 
 const Sales = (props) => {
   const theme = useTheme();
+  const [portfolioData, setPortfolioData] = useState([]);
+  const [labels, setLabels] = useState([]);
+
+  useEffect(() => {
+    const alpaca = new Alpaca({
+      keyId: process.env.REACT_APP_API_KEY,
+      secretKey: process.env.REACT_APP_APCA_API_SECRET_KEY,
+      paper: true
+    });
+    alpaca.getPortfolioHistory({
+      period: '7D',
+      timeframe: '1H'
+    }).then((portfolio) => {
+      // Print the quantity of shares for each position.
+      setPortfolioData(portfolio.equity);
+      setLabels(portfolio.timestamp.map((timestamp) => moment.unix(timestamp).format('lll')));
+    });
+  }, []);
 
   const data = {
     datasets: [
@@ -23,12 +44,12 @@ const Sales = (props) => {
         barThickness: 12,
         borderRadius: 4,
         categoryPercentage: 0.5,
-        data: [100000, 100555, 100600, 100880, 101002, 102222, 103450],
+        data: portfolioData,
         label: 'Total',
         maxBarThickness: 10
       },
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
+    labels
   };
 
   const options = {

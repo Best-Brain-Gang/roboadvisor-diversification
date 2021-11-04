@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^2.9.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-beta.5",
