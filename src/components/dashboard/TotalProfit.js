@@ -7,9 +7,11 @@ import {
 } from '@material-ui/core';
 import { indigo } from '@material-ui/core/colors';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
-const TotalProfit = (props) => (
-  <Card {...props}>
+const TotalProfit = ({ number, title }) => (
+  <Card>
     <CardContent>
       <Grid
         container
@@ -22,13 +24,13 @@ const TotalProfit = (props) => (
             gutterBottom
             variant="h6"
           >
-            TOTAL PROFIT
+            {title.toUpperCase()}
           </Typography>
           <Typography
             color="textPrimary"
             variant="h3"
           >
-            $23,200
+            <NumberFormat value={number} displayType="text" thousandSeparator="," prefix="$" />
           </Typography>
         </Grid>
         <Grid item>
@@ -46,5 +48,10 @@ const TotalProfit = (props) => (
     </CardContent>
   </Card>
 );
+
+TotalProfit.propTypes = {
+  number: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired
+};
 
 export default TotalProfit;
