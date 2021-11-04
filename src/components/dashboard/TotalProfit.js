@@ -11,7 +11,9 @@ import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 
 const TotalProfit = ({ number, title }) => (
-  <Card>
+  <Card
+    sx={{ height: '100%' }}
+  >
     <CardContent>
       <Grid
         container
