@@ -31,26 +31,6 @@ class LexChat extends React.Component {
     conversationDiv.scrollTop = conversationDiv.scrollHeight;
   }
 
-  static showResponse(lexResponse) {
-    const conversationDiv = document.getElementById('conversation');
-    const responsePara = document.createElement('P');
-    responsePara.className = 'lexResponse';
-    if (lexResponse.message) {
-      responsePara.appendChild(document.createTextNode(lexResponse.message));
-      responsePara.appendChild(document.createElement('br'));
-    }
-    if (lexResponse.dialogState === 'ReadyForFulfillment') {
-      responsePara.appendChild(
-        document.createTextNode('Ready for fulfillment')
-      );
-      // TODO:  show slot values
-    } else {
-      responsePara.appendChild(document.createTextNode(''));
-    }
-    conversationDiv.appendChild(responsePara);
-    conversationDiv.scrollTop = conversationDiv.scrollHeight;
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +41,7 @@ class LexChat extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.showResponse = this.showResponse.bind(this);
   }
 
   componentDidMount() {
@@ -85,6 +66,36 @@ class LexChat extends React.Component {
   handleChange(event) {
     event.preventDefault();
     this.setState({ data: event.target.value });
+  }
+
+  showResponse(lexResponse) {
+    const conversationDiv = document.getElementById('conversation');
+    const responsePara = document.createElement('P');
+    responsePara.className = 'lexResponse';
+    if (lexResponse.message) {
+      responsePara.appendChild(document.createTextNode(lexResponse.message));
+      responsePara.appendChild(document.createElement('br'));
+    }
+    if (lexResponse.dialogState === 'Fulfilled') {
+      responsePara.appendChild(document.createElement('br'));
+      Object.entries(lexResponse.slots).forEach(([key, value]) => {
+        responsePara.appendChild(document.createTextNode(`${key}: ${value}`));
+        responsePara.appendChild(document.createElement('br'));
+      });
+      const { handlePortfolioChange } = this.props;
+      const { riskLevel } = lexResponse.slots;
+      if (riskLevel >= 0 && riskLevel < 5) {
+        handlePortfolioChange('Conservative');
+      } else if (riskLevel >= 5 && riskLevel < 8) {
+        handlePortfolioChange('Moderate');
+      } else if (riskLevel >= 8 && riskLevel < 11) {
+        handlePortfolioChange('Aggressive');
+      }
+    } else {
+      responsePara.appendChild(document.createTextNode(''));
+    }
+    conversationDiv.appendChild(responsePara);
+    conversationDiv.scrollTop = conversationDiv.scrollHeight;
   }
 
   pushChat(event) {
@@ -123,7 +134,7 @@ class LexChat extends React.Component {
           this.setState({ sessionAttributes: data.sessionAttributes });
           // sessionAttributes = data.sessionAttributes;
           // show response and/or error/dialog status
-          LexChat.showResponse(data);
+          this.showResponse(data);
         }
         // re-enable input
         inputFieldText.value = '';
@@ -253,7 +264,8 @@ LexChat.propTypes = {
   region: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
   height: PropTypes.number,
-  headerText: PropTypes.string
+  headerText: PropTypes.string,
+  handlePortfolioChange: PropTypes.func
 };
 
 export default LexChat;

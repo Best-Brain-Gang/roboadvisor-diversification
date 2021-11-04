@@ -9,14 +9,17 @@ import {
   colors,
   useTheme
 } from '@material-ui/core';
+import propTypes from 'prop-types';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TabletIcon from '@material-ui/icons/Tablet';
+import portfolios from '../../__mocks__/portfolios';
 
-const TrafficByDevice = (props) => {
+const AssetAllocations = (props) => {
   const theme = useTheme();
+  const { portfolioType } = props;
 
-  const data = {
+  let data = {
     datasets: [
       {
         data: [63, 15, 22],
@@ -32,6 +35,40 @@ const TrafficByDevice = (props) => {
     ],
     labels: ['Stocks', 'Bonds', 'Crypto']
   };
+
+  let devices = [
+    {
+      title: 'Stocks',
+      value: 63,
+      icon: LaptopMacIcon,
+      color: colors.indigo[500]
+    },
+    {
+      title: 'Bonds',
+      value: 15,
+      icon: TabletIcon,
+      color: colors.red[600]
+    },
+    {
+      title: 'Crypto',
+      value: 23,
+      icon: PhoneIcon,
+      color: colors.orange[600]
+    }
+  ];
+
+  const portfoliosMap = portfolios.reduce((accumulator, ele) => {
+    accumulator[ele.title] = {
+      datasets: ele.data,
+      allocations: ele.allocations
+    };
+    return accumulator;
+  }, {});
+
+  if (portfolioType) {
+    data = portfoliosMap[portfolioType].datasets;
+    devices = portfoliosMap[portfolioType].allocations;
+  }
 
   const options = {
     animation: false,
@@ -55,27 +92,6 @@ const TrafficByDevice = (props) => {
     }
   };
 
-  const devices = [
-    {
-      title: 'Stocks',
-      value: 63,
-      icon: LaptopMacIcon,
-      color: colors.indigo[500]
-    },
-    {
-      title: 'Bonds',
-      value: 15,
-      icon: TabletIcon,
-      color: colors.red[600]
-    },
-    {
-      title: 'Crypto',
-      value: 23,
-      icon: PhoneIcon,
-      color: colors.orange[600]
-    }
-  ];
-
   return (
     <Card {...props}>
       <CardHeader title="Asset Allocations" />
@@ -87,10 +103,7 @@ const TrafficByDevice = (props) => {
             position: 'relative'
           }}
         >
-          <Doughnut
-            data={data}
-            options={options}
-          />
+          <Doughnut data={data} options={options} />
         </Box>
         <Box
           sx={{
@@ -99,11 +112,7 @@ const TrafficByDevice = (props) => {
             pt: 6
           }}
         >
-          {devices.map(({
-            color,
-            title,
-            value
-          }) => (
+          {devices.map(({ color, title, value }) => (
             <Box
               key={title}
               sx={{
@@ -111,16 +120,10 @@ const TrafficByDevice = (props) => {
                 textAlign: 'center'
               }}
             >
-              <Typography
-                color="textPrimary"
-                variant="body1"
-              >
+              <Typography color="textPrimary" variant="body1">
                 {title}
               </Typography>
-              <Typography
-                style={{ color }}
-                variant="h2"
-              >
+              <Typography style={{ color }} variant="h2">
                 {value}
                 %
               </Typography>
@@ -132,4 +135,8 @@ const TrafficByDevice = (props) => {
   );
 };
 
-export default TrafficByDevice;
+AssetAllocations.propTypes = {
+  portfolioType: propTypes.string
+};
+
+export default AssetAllocations;

@@ -1,13 +1,12 @@
 import { v4 as uuid } from 'uuid';
-import {
-  colors
-} from '@material-ui/core';
+import { colors } from '@material-ui/core';
 
 export default [
   {
     id: uuid(),
     createdAt: '31/03/2019',
-    description: 'Conservative gives high priority to treasury bonds with 40% allocation to mitigate draw down risk.',
+    description:
+      'Conservative gives high priority to treasury bonds with 40% allocation to mitigate draw down risk.',
     media: '/static/images/products/product_2.png',
     title: 'Conservative',
     totalDownloads: '625',
@@ -79,7 +78,8 @@ export default [
   {
     id: uuid(),
     createdAt: '04/04/2019',
-    description: 'Aggressive fully allocates to equity positions and utilizes a neural nets trading system to slightly offset the risk while trying to maximize returns.',
+    description:
+      'Aggressive fully allocates to equity positions and utilizes a neural nets trading system to slightly offset the risk while trying to maximize returns.',
     media: '/static/images/products/product_4.png',
     title: 'Aggressive',
     totalDownloads: '406',
@@ -106,5 +106,5 @@ export default [
       ],
       labels: ['Stocks']
     }
-  },
+  }
 ];

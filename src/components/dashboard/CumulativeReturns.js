@@ -24,7 +24,7 @@ const Sales = (props) => {
         borderRadius: 4,
         categoryPercentage: 0.5,
         data: [100000, 100555, 100600, 100880, 101002, 102222, 103450],
-        label: '',
+        label: 'Total',
         maxBarThickness: 10
       },
     ],
