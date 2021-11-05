@@ -55,10 +55,10 @@ const Dashboard = () => {
               <TotalProfit title="Buying Power" number={tradingAccount.buying_power} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <TotalProfit title="Short Market Value" number={tradingAccount.long_market_value} sx={{ height: '100%' }} />
+              <TotalProfit title="Long Market Value" number={tradingAccount.long_market_value} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <TotalProfit title="Long Market Value" number={tradingAccount.short_market_value} sx={{ height: '100%' }} />
+              <TotalProfit title="Short Market Value" number={tradingAccount.short_market_value} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={4} md={6} xl={3} xs={12}>
               <AssetAllocations portfolioType={portfolioType} sx={{ height: '100%' }} />
