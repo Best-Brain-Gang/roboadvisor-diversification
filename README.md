@@ -40,7 +40,7 @@ The content contained in this project is for informational purposes only. You sh
 
 ## Project Overview
 
-This project is about creating a RoboAdvisor diversification portfolio for users looking to understand their investment portfolio recommendation. It gives the users some idea on the mix of ETFs that they should invest in depending on their investment criteria as well level of risk. This project has been launched with the use of AWS Lex and React so users can have a smoother experience.
+This project is about creating a RoboAdvisor diversification portfolio for users looking to understand their investment portfolio recommendation. It gives the users some idea on the mix of ETFs that they should invest in depending on their investment criteria as well level of risk. This project has been launched with the use of AWS Lex and React so users can have a smoother experience. A live demo of the frontend hooked up to the AWS Lex chatbot can be found [here](https://roboadvisor-diversification.surge.sh/).
 
 ---
 
