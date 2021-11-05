@@ -21,19 +21,24 @@ const Sales = (props) => {
   const [labels, setLabels] = useState([]);
 
   useEffect(() => {
-    const alpaca = new Alpaca({
-      keyId: process.env.REACT_APP_API_KEY,
-      secretKey: process.env.REACT_APP_APCA_API_SECRET_KEY,
-      paper: true
-    });
-    alpaca.getPortfolioHistory({
-      period: '7D',
-      timeframe: '1H'
-    }).then((portfolio) => {
-      // Print the quantity of shares for each position.
-      setPortfolioData(portfolio.equity);
-      setLabels(portfolio.timestamp.map((timestamp) => moment.unix(timestamp).format('lll')));
-    });
+    if (process.env.REACT_APP_API_KEY && process.env.REACT_APP_APCA_API_SECRET_KEY) {
+      const alpaca = new Alpaca({
+        keyId: process.env.REACT_APP_API_KEY,
+        secretKey: process.env.REACT_APP_APCA_API_SECRET_KEY,
+        paper: true
+      });
+      alpaca.getPortfolioHistory({
+        period: '7D',
+        timeframe: '1H'
+      }).then((portfolio) => {
+        // Print the quantity of shares for each position.
+        setPortfolioData(portfolio.equity);
+        setLabels(portfolio.timestamp.map((timestamp) => moment.unix(timestamp).format('lll')));
+      });
+    } else {
+      setPortfolioData([100000, 100555, 100600, 100880, 101002, 102222, 103450]);
+      setLabels(['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']);
+    }
   }, []);
 
   const data = {

@@ -15,19 +15,21 @@ import LexChat from '../components/chatbot/LexChat';
 
 const Dashboard = () => {
   const [portfolioType, setPortfolioType] = useState('');
-  const [tradingAccount, setTradingAccount] = useState({});
+  const [tradingAccount, setTradingAccount] = useState();
 
   useEffect(() => {
-    const alpaca = new Alpaca({
-      keyId: process.env.REACT_APP_API_KEY,
-      secretKey: process.env.REACT_APP_APCA_API_SECRET_KEY,
-      paper: true
-    });
-    alpaca.getAccount().then((account) => {
-      // Print the quantity of shares for each position.
-      console.log('Current Account:', account);
-      setTradingAccount(account);
-    });
+    if (process.env.REACT_APP_API_KEY && process.env.REACT_APP_APCA_API_SECRET_KEY) {
+      const alpaca = new Alpaca({
+        keyId: process.env.REACT_APP_API_KEY,
+        secretKey: process.env.REACT_APP_APCA_API_SECRET_KEY,
+        paper: true
+      });
+      alpaca.getAccount().then((account) => {
+        // Print the quantity of shares for each position.
+        console.log('Current Account:', account);
+        setTradingAccount(account);
+      });
+    }
   }, []);
 
   const handlePortfolioChange = (newPortfolio) => {
@@ -49,16 +51,16 @@ const Dashboard = () => {
         <Container maxWidth={false}>
           <Grid container spacing={3}>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <Equity equity={tradingAccount.equity} />
+              <Equity equity={tradingAccount ? tradingAccount.equity : 100840} />
             </Grid>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <TotalProfit title="Buying Power" number={tradingAccount.buying_power} sx={{ height: '100%' }} />
+              <TotalProfit title="Buying Power" number={tradingAccount ? tradingAccount.buying_power : 193950} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <TotalProfit title="Long Market Value" number={tradingAccount.long_market_value} sx={{ height: '100%' }} />
+              <TotalProfit title="Long Market Value" number={tradingAccount ? tradingAccount.long_market_value : 5460} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <TotalProfit title="Short Market Value" number={tradingAccount.short_market_value} sx={{ height: '100%' }} />
+              <TotalProfit title="Short Market Value" number={tradingAccount ? tradingAccount.short_market_value : 0} sx={{ height: '100%' }} />
             </Grid>
             <Grid item lg={4} md={6} xl={3} xs={12}>
               <AssetAllocations portfolioType={portfolioType} sx={{ height: '100%' }} />
