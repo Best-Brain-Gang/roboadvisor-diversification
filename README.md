@@ -64,6 +64,8 @@ This project leverages **[python version 3.8.5](https://www.python.org/downloads
 
 * [Yahoo API](https://pypi.org/project/fix-yahoo-finance/0.1.30/) - This was used to be able to get closing prices for the ETFs that we will be using in the list of  investments.
 
+* [Alpaca Trade API](https://alpaca.markets/docs/) -  This is used to get API trading data for this project. To have access to Alpaca's API key and API secret keys, the user needs to register for personal account and save their own keys.
+
 * [Scikit Learn](https://scikit-learn.org/stable/) - *version 0.24.2* - This package has a lot of different tools and model that could be use to create a machine learning model.
 
     * [linear model](https://scikit-learn.org/stable/modules/linear_model.html) - This allows the model to call the Logisitic Regression model to run our machine learning.
@@ -153,8 +155,13 @@ Once you click ENTER, this will open on your default browser, which will allow y
 ```
 - Once built, a html website address will show, see pic below. You'll need to copy and paste this on your browser to view the user interface. It may have a different local host number than the photo.
 
-    <img src="./Images/reactlink.png" alt="ReactJS Website" width="300" height="150"> 
+   <img src="./Images/reactlink.png" alt="ReactJS Website" width="300" height="150"> 
 
+- Additionally you might need an Alpaca API key to run the React website. It'd be best to create an .env file with this file name:
+    ```
+    REACT_APP_API_KEY=
+    REACT_APP_APCA_API_SECRET_KEY=
+    ```
 ---
 
 ### 7. To install the Yahoo Finance API, please type below on your dev environment:
@@ -201,9 +208,9 @@ Here are some of the example of the project:
 ---
 ## **Presentation Deck**
 
-### Click [**HERE**]() to learn more from our presentation.
+### Click [**HERE**](https://github.com/Best-Brain-Gang/roboadvisor-diversification/blob/main/Presentation_deck/RoboAdvisor_Diversification_Portfolio.pdf) to learn more from our presentation.
 
-[![RoboAdvisor Diversification Deck](./Images/presentationdeck_project3.png)]()
+[![RoboAdvisor Diversification Deck](./Images/presentationdeck_project3.png)](https://github.com/Best-Brain-Gang/roboadvisor-diversification/blob/main/Presentation_deck/RoboAdvisor_Diversification_Portfolio.pdf)
 
 ---
 
